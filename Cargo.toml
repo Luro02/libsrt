@@ -1,0 +1,27 @@
+[package]
+name = "libsrt"
+version = "0.1.0"
+authors = ["Luro02 <24826124+Luro02@users.noreply.github.com>"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+[workspace]
+members = ["pattern-adaptors"]
+
+[features]
+default = []
+alloc = []
+# TODO: what if log is disabled, but std enabled?
+#       I think this will automatically enable log?
+std = ["log/std"]
+
+[dependencies]
+thiserror = "1.0"
+log = { version = "0.4", default-features = false, optional = true }
+# TODO: is this used anywhere?
+lexical-core = { version = "0.7", optional = true }
+pattern-adaptors = { path = "pattern-adaptors" }
+
+[dev-dependencies]
+pretty_assertions = "0.6"
+version-sync = "0.9"
